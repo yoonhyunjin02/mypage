@@ -1,0 +1,91 @@
+body {
+    background-color: #d7e491;  /* 원하는 색으로 변경 */
+}
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#box_model {
+    border: 5px solid green;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+}
+
+#outer_box {
+    border: 3px solid rgb(103, 156, 16);
+}
+
+strong {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%; /* 오른쪽 여백 위해 width 줄임 */
+}
+
+h1 {
+    text-align: center;
+    font-family: 'BMJUA', sans-serif;
+}
+
+h2 {
+    font-family: 'BMJUA', sans-serif;
+}
+
+th, td {
+    border: 1px solid #0f3f03;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    text-align: center; /* 구분 중앙정렬 */
+    background-color: #abe7ab;
+}
+
+td {
+    text-align: left; /* 내용 왼쪽정렬 */
+}
+
+/* 첫 번째 열(구분) 오른쪽 굵은 선 */
+tr td:first-child, tr th:first-child {
+    background: #abe7ab;
+    font-weight: bold;
+    border-right: 3px solid #0f3f03;
+}
+
+tr:first-child th {
+    border-bottom: 2px solid #0f3f03;
+}
+
+.popup {
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(215, 247, 214);
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 100;
+    padding: 10px;
+}
+
+a:hover {
+    color: green;
+}
+
+.box {
+    background-color: white;        /* 박스 배경색 */
+    border-radius: 10px;            /* 모서리 둥글게 */
+    padding: 20px;                  /* 안쪽 여백 */
+    margin-bottom: 20px;            /* 박스 사이 간격 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* 박스 그림자 */
+}
