@@ -3,119 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS 애니메이션 예시 - 이미지 버전</title>
+    <title>pikmin CSS 애니메이션 예시</title>
     <style>
         body {
-            background-image: url('grass.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            background-image: url('./pikmin/grass.jpg');     /* 배경 이미지 설정 */
+            background-size: cover;                 /* 화면에 가득 차게 */
+            background-repeat: no-repeat;           /* 반복 안 함 */
+            background-position: center;            /* 가운데 정렬 */
+            background-attachment: fixed;           /* 스크롤 시 배경 고정 */
+            font-family: 'Arial', sans-serif;       /* 폰트 설정 */
+            display: flex;                          /* Flexbox 레이아웃 */
+            flex-direction: column;                 /* 세로 정렬 */
+            align-items: center;                    /* 가운데 정렬 */
+            padding: 20px;                          /* 패딩 */
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            max-width: 800px;
+            display: flex;                          /* Flexbox로 자식 요소 정렬 */
+            flex-wrap: wrap;                        /* 여러 줄로 나눔 */
+            justify-content: center;                /* 가로 중앙 정렬 */
+            gap: 30px;                              /* 요소 간 간격 */
+            margin: 20px 0;                         /* 위아래 여백 */
+            max-width: 800px;                       /* 최대 너비 제한 */
         }
 
         .pikmin {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            background-color: white;                        /* 배경색 흰색 */
+            border-radius: 8px;                               /* 모서리 둥글게 */
+            padding: 20px;                                    /* 안쪽 여백 */
+            width: 200px;                                     /* 고정 너비 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);      /* 그림자 효과 */
+            text-align: center;                               /* 텍스트 가운데 정렬 */
         }
 
         h1 {
-            color: white;
-            margin-bottom: 30px;
+            color: white;       /* 글자색 흰색 */
+            margin-bottom: 30px;  /* 아래 여백 */
         }
 
         h2 {
-            color: #444;
-            font-size: 18px;
-            margin-bottom: 15px;
+            color: #444;          /* 짙은 회색 글자 */
+            font-size: 18px;        /* 글자 크기 */
+            margin-bottom: 15px;    /* 아래 여백 */
         }
 
         .image-box {
-            width: 100px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
+            width: 100px;            /* 고정 너비 */
+            height: 150px;           /* 고정 높이 */
+            display: flex;           /* 이미지 정렬을 위한 Flexbox */
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center;     /* 세로 중앙 정렬 */
+            margin: 0 auto;          /* 수평 중앙 */
         }
 
         .image-box img {
-            max-width: 100%;
+            max-width: 100%;        /* 부모 요소 크기를 넘지 않도록 */
             max-height: 100%;
-            object-fit: contain;
-            display: block;
+            object-fit: contain;    /* 비율 유지하며 축소 */
+            display: block;         /* 인라인 요소 제거 */
         }
 
+        /* 애니메이션 속성 */
         .box-scale {
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease; 
         }
+
+        /* 확대 */
         .box-scale:hover {
-            transform: scale(1.2);
+            transform: scale(1.2); 
         }
 
         .box-rotate {
             transition: transform 0.5s ease;
         }
+
+        /* 45도 회전 */
         .box-rotate:hover {
-            transform: rotate(45deg);
+            transform: rotate(45deg); 
         }
 
         .box-translate {
             transition: transform 0.5s ease;
         }
+
+        /* 위로 이동 */
         .box-translate:hover {
-            transform: translateY(-20px);
+            transform: translateY(-20px); 
         }
 
+        /* 반복 애니메이션 적용 */
         .box-keyframes {
-            animation: pulse 2s infinite;
+            animation: pulse 2s infinite; 
         }
+
+        /* 펄스 애니메이션 정의 */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            100% { transform: scale(1); } 
         }
 
         .box-multiple {
             transition: all 0.5s ease;
         }
+
+        /* 회전 + 확대 */
         .box-multiple:hover {
-            transform: rotate(180deg) scale(2);
+            transform: rotate(180deg) scale(2); 
         }
 
+        /* 복합 이동/회전 애니메이션 */
         .box-complex {
-            animation: move 4s infinite alternate;
+            animation: move 4s infinite alternate; 
         }
+
+        /* 여러 동작 조합 */
         @keyframes move {
             0% { transform: translateX(-50px) rotate(0deg); }
             25% { transform: translateX(0) rotate(90deg); }
             50% { transform: translateX(50px) rotate(180deg); border-radius: 50%; }
             75% { transform: translateX(0) rotate(270deg); border-radius: 0; }
-            100% { transform: translateX(-50px) rotate(360deg); }
+            100% { transform: translateX(-50px) rotate(360deg); } 
         }
 
         .fade-on-hover {
             transition: opacity 0.5s ease;
         }
+
+        /* 반투명 처리 */
         .fade-on-hover:hover {
-            opacity: 0.4;
+            opacity: 0.4; 
         }
 
         .shadow-on-hover {
@@ -123,133 +140,152 @@
             box-shadow: none;
             border-radius: 8px;
         }
+
+        /* 그림자 강조 */
         .shadow-on-hover:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
         }
 
+        /* 3D 회전을 자연스럽게 표현 */
         .box-flip {
             transition: transform 0.6s ease;
-            transform-style: preserve-3d;
-        }
-        .box-flip:hover {
-            transform: rotateY(180deg);
+            transform-style: preserve-3d; 
         }
 
+        /* Y축 기준으로 뒤집기 */
+        .box-flip:hover {
+            transform: rotateY(180deg); 
+        }
+
+        /* 좌우 흔들리는 효과 */
         @keyframes shake {
             0% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             50% { transform: translateX(5px); }
             75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-        .box-shake:hover {
-            animation: shake 0.5s ease;
+            100% { transform: translateX(0); } 
         }
 
-                /* 반응형 레이아웃 */
-        @media (max-width: 768px) { /*화면 너비가 768px 이하일 때 적용*/
+        /* 흔들림 애니메이션 실행 */
+        .box-shake:hover {
+            animation: shake 0.5s ease; 
+        }
+
+        /* 반응형 레이아웃 설정 */
+        @media (max-width: 768px) {
             .pikmin {
-                width: calc(50% - 10px);  /* 카드 가로 2개씩 배치 */
-                min-width: 250px;         /* 최소 250px 이하로 줄어들지 않음 */
+                width: calc(50% - 10px); /* 2열 배치 */
+                min-width: 250px;        /* 너무 작아지지 않도록 */
             }
         }
-        
-        @media (max-width: 480px) { /*화면 너비가 480px 이하일 때 적용 (모바일 사이즈)*/
+
+        @media (max-width: 480px) {
             .container {
-                flex-direction: column; /* 세로 배치 */
+                flex-direction: column; /* 세로로 배치 */
                 align-items: center;    /* 가운데 정렬 */
             }
-            
             .pikmin {
-                width: 100%;            /* 가로 꽉 채움 */
-                max-width: 350px;       /* 최대 350px까지만 커짐 */
+                width: 100%;        /* 화면 가로 전체 */
+                max-width: 350px;   /* 너무 커지지 않게 제한 */
             }
         }
     </style>
 </head>
+
 <body>
     <h1>Pikmin CSS 애니메이션 예시</h1>
 
-    <img src="all.webp" alt="pikmin" style="width: 500px; margin-bottom: 20px;">
+    <img src="./pikmin/all.png" alt="pikmin" style="width: 500px; margin-bottom: 20px;">
 
     <div class="container">
+
+        <!-- 확대/축소 -->
         <div class="pikmin">
             <h2>확대/축소 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="red.webp" alt="확대" class="box-scale">
+                <img src="./pikmin/red.webp" alt="확대" class="box-scale">
             </div>
         </div>
 
+        <!-- 회전 (hover) -->
         <div class="pikmin">
             <h2>회전 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="yellow.webp" alt="회전" class="box-rotate">
+                <img src="./pikmin/yellow.webp" alt="회전" class="box-rotate">
             </div>
         </div>
 
+        <!-- 이동 (hover) -->
         <div class="pikmin">
             <h2>이동 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="blue.webp" alt="이동" class="box-translate">
+                <img src="./pikmin/blue.webp" alt="이동" class="box-translate">
             </div>
         </div>
 
+        <!-- 자동 펄스 애니메이션 -->
         <div class="pikmin">
             <h2>자동 펄스 애니메이션</h2>
             <p>자동으로 실행됩니다</p>
             <div class="image-box">
-                <img src="purple.webp" alt="펄스" class="box-keyframes">
+                <img src="./pikmin/purple.webp" alt="펄스" class="box-keyframes">
             </div>
         </div>
 
+        <!-- 다중 변화 (hover) -->
         <div class="pikmin">
             <h2>다중 변화 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="white.webp" alt="다중변화" class="box-multiple">
+                <img src="./pikmin/white.webp" alt="다중변화" class="box-multiple">
             </div>
         </div>
 
+        <!--복잡한 애니메이션-->
         <div class="pikmin">
             <h2>복잡한 애니메이션</h2>
             <p>자동으로 실행됩니다</p>
             <div class="image-box">
-                <img src="stone.webp" alt="복잡한" class="box-complex">
+                <img src="./pikmin/stone.webp" alt="복잡한" class="box-complex">
             </div>
         </div>
 
+        <!-- 투명도 애니메이션 -->
         <div class="pikmin">
             <h2>투명도 애니메이션</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="pink.webp" alt="투명도" class="fade-on-hover">
+                <img src="./pikmin/pink.webp" alt="투명도" class="fade-on-hover">
             </div>
         </div>
 
+        <!-- 그림자 애니메이션 -->
         <div class="pikmin">
             <h2>Hover 시 그림자</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="sky.webp" alt="그림자" class="shadow-on-hover">
+                <img src="./pikmin/sky.webp" alt="그림자" class="shadow-on-hover">
             </div>
         </div>
 
+        <!-- 흔들림 (hover) -->
         <div class="pikmin">
             <h2>흔들림 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="green.png" alt="흔들림" class="box-shake">
+                <img src="./pikmin/green.png" alt="흔들림" class="box-shake">
             </div>
         </div>
 
+        <!-- 뒤집기 (hover) -->
         <div class="pikmin">
             <h2>뒤집기 (hover)</h2>
             <p>마우스를 올려보세요</p>
             <div class="image-box">
-                <img src="mushroom.png" alt="뒤집기" class="box-flip">
+                <img src="./pikmin/mushroom.png" alt="뒤집기" class="box-flip">
             </div>
         </div>
     </div>
