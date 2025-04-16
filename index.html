@@ -145,6 +145,26 @@
         .box-shake:hover {
             animation: shake 0.5s ease;
         }
+
+                /* 반응형 레이아웃 */
+        @media (max-width: 768px) { /*화면 너비가 768px 이하일 때 적용*/
+            .pikmin {
+                width: calc(50% - 10px);  /* 카드 가로 2개씩 배치 */
+                min-width: 250px;         /* 최소 250px 이하로 줄어들지 않음 */
+            }
+        }
+        
+        @media (max-width: 480px) { /*화면 너비가 480px 이하일 때 적용 (모바일 사이즈)*/
+            .container {
+                flex-direction: column; /* 세로 배치 */
+                align-items: center;    /* 가운데 정렬 */
+            }
+            
+            .pikmin {
+                width: 100%;            /* 가로 꽉 채움 */
+                max-width: 350px;       /* 최대 350px까지만 커짐 */
+            }
+        }
     </style>
 </head>
 <body>
