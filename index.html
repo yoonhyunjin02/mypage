@@ -1,93 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자기소개 페이지</title>
-    <link rel="stylesheet" href="mypage.css">
+    <title>CSS 애니메이션 예시 - 이미지 버전</title>
+    <style>
+        body {
+            background-image: url('/images/pikmin/grass.jpg'); /* 이미지로 배경화면 */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            max-width: 800px;
+        }
+
+        .pikmin {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #444;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* 이미지 박스 (고정 크기) */
+        .image-box {
+            width: 100px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 애니메이션: 확대/축소 */
+        .box-scale {
+            transition: transform 0.5s ease;
+        }
+        .box-scale:hover {
+            transform: scale(1.2);
+        }
+
+        /* 애니메이션: 회전 */
+        .box-rotate {
+            transition: transform 0.5s ease;
+        }
+        .box-rotate:hover {
+            transform: rotate(45deg);
+        }
+
+        /* 애니메이션: 이동 */
+        .box-translate {
+            transition: transform 0.5s ease;
+        }
+        .box-translate:hover {
+            transform: translateY(-20px);
+        }
+
+        /* 애니메이션: 자동 펄스 */
+        .box-keyframes {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* 애니메이션: 다중 변화 */
+        .box-multiple {
+            transition: all 0.5s ease;
+        }
+        .box-multiple:hover {
+            transform: rotate(180deg) scale(2);
+        }
+
+        /* 애니메이션: 복잡한 움직임 */
+        .box-complex {
+            animation: move 4s infinite alternate;
+        }
+        @keyframes move {
+            0% { transform: translateX(-50px) rotate(0deg); }
+            25% { transform: translateX(0) rotate(90deg); }
+            50% { transform: translateX(50px) rotate(180deg); border-radius: 50%; }
+            75% { transform: translateX(0) rotate(270deg); border-radius: 0; }
+            100% { transform: translateX(-50px) rotate(360deg); }
+        }
+
+        /* 애니메이션: 투명도 */
+        .fade-on-hover {
+            transition: opacity 0.5s ease;
+        }
+        .fade-on-hover:hover {
+            opacity: 0.4;
+        }
+
+        /* 애니메이션: hover 시 그림자 */
+        .shadow-on-hover {
+            transition: box-shadow 0.4s ease;
+            box-shadow: none;
+            border-radius: 8px;
+        }
+        .shadow-on-hover:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 애니메이션: 뒤집기 */
+        .box-flip {
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+        }
+        .box-flip:hover {
+            transform: rotateY(180deg);
+        }
+
+        /* 애니메이션: 흔들림 */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        .box-shake:hover {
+            animation: shake 0.5s ease;
+        }
+    </style>
 </head>
-
 <body>
-  <div id="outer_box">
-    <div id="box_model"><h1>🙌 소개 페이지 🙌</h1></div>
-  </div>
-  <br>
+    <h1>Pikmin CSS 애니메이션 예시</h1>
 
-  <div class="box">
-    <h2>📢 이름 : 윤현진</h2>
+    <img src="/images/pikmin/all.webp" alt="pikmin" style="width: 500px; margin-bottom: 20px;">
 
-    <img src="./cat.png" alt="고양이 사진" width="300" height="300" />
-  </div>
+    <div class="container">
+        <div class="pikmin">
+            <h2>확대/축소 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/red.webp" alt="확대" class="box-scale">
+            </div>
+        </div>
 
-  <div class="box">
-    <h2>📢 나의 특징은?</h2>
+        <div class="pikmin">
+            <h2>회전 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/yellow.webp" alt="회전" class="box-rotate">
+            </div>
+        </div>
 
-  <table>
-      <tr>
-        <th>구분</th>
-        <th>내용</th>
-      </tr>
-      <tr>
-        <th>MBTI</th>
-        <td>
-          <ul>
-            <li>ISTJ(I랑 S는 50%)</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>좋아하는 것</th>
-        <td>
-          <ul>
-            <li>배구, 농구</li>
-            <li>클래식 음악 듣기
-              <ul>
-                <li>
-                  요즘 듣는 노래 :
-                  <a href="https://youtu.be/zCTLr0j6Gs0?si=_MLFjQf6GvMIqInZ" target="_blank">
-                    William Bolcom의 우아한 유령
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>고양이</li>
-            <li>초록색</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>취미</th>
-        <td>
-          <ul>
-            <li>피아노 연주</li>
-            <li>길고양이 사진 찍기</li>
-            <li>영화 보기
-              <ul>
-                <li>최근 본 영화 : 샤인</li>
-              </ul>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </div>
+        <div class="pikmin">
+            <h2>이동 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/blue.webp" alt="이동" class="box-translate">
+            </div>
+        </div>
 
-  <div class="box">
-    <h2>📢 이번 강의 각오!</h2>
-    <q>스프링부트의 개념을 제대로 이해하고, 작은 프로젝트부터 핵심 기술을 사용한 실전 <b>포트폴리오</b> 만들기</q>
-  </div>
+        <div class="pikmin">
+            <h2>자동 펄스 애니메이션</h2>
+            <p>자동으로 실행됩니다</p>
+            <div class="image-box">
+                <img src="/images/pikmin/purple.webp" alt="펄스" class="box-keyframes">
+            </div>
+        </div>
 
-  <div class="box">
-  <h2>📢 나의 SNS</h2>
-    <ul>
-        <li><a href="https://github.com/yoonhyunjin02" target="_blank">Github</a></li>
-        <li><a href="https://yoonhyunjin.tistory.com/" target="_blank">tistory</a></li>
-    </ul>
-  </div>
+        <div class="pikmin">
+            <h2>다중 변화 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/white.webp" alt="다중변화" class="box-multiple">
+            </div>
+        </div>
 
-  <div class="popup">
-    🔥잘부탁드립니다🔥
-  </div>
+        <div class="pikmin">
+            <h2>복잡한 애니메이션</h2>
+            <p>자동으로 실행됩니다</p>
+            <div class="image-box">
+                <img src="/images/pikmin/stone.webp" alt="복잡한" class="box-complex">
+            </div>
+        </div>
 
+        <div class="pikmin">
+            <h2>투명도 애니메이션</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/pink.webp" alt="투명도" class="fade-on-hover">
+            </div>
+        </div>
+
+        <div class="pikmin">
+            <h2>Hover 시 그림자</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/sky.webp" alt="그림자" class="shadow-on-hover">
+            </div>
+        </div>
+
+        <div class="pikmin">
+            <h2>흔들림 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/green.png" alt="흔들림" class="box-shake">
+            </div>
+        </div>
+
+        <div class="pikmin">
+            <h2>뒤집기 (hover)</h2>
+            <p>마우스를 올려보세요</p>
+            <div class="image-box">
+                <img src="/images/pikmin/mushroom.png" alt="뒤집기" class="box-flip">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
